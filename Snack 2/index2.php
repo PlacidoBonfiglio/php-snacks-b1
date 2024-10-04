@@ -1,5 +1,5 @@
 <?php
-
+$userName = $_GET["name"];
 ?>
 
 <!DOCTYPE html>
@@ -18,20 +18,25 @@
     <main>
         <h1 class="text-center mt-5">Snack 2</h1>
 
-        <form action="index2.php" method="get" class="container">
-            <div class="mb-3 mt-5">
+        <form action="index2.php" method="GET" class="container">
+            <div class="mb-4 mt-5">
                 <label for="name">Inserisci il tuo nome</label>
-                <input type="text" id="name">
+                <input type="text" id="name" name="name">
             </div>
 
-            <div class="mb-3">
+            <div class=" mb-4">
                 <label for="email">Inserisci la tua e-mail</label>
-                <input type="email" id="email">
+                <input type="email" id="email" name="email">
             </div>
 
-            <div class="mb-3">
+            <div class="mb-4">
                 <label for="age">Inserisci la tua età</label>
-                <input type="number" id="age">
+                <input type="number" id="age" name="age">
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary">Send</button>
+                <button type="reset" class="btn btn-warning">Reset</button>
             </div>
         </form>
     </main>
