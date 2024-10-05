@@ -251,10 +251,40 @@ $classi = [
     <!-- Bootstrap cdn 5.3.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style4.css">
 </head>
 
 <body>
+    <main class="container">
 
+        <h1 class="text-center pt-3 pb-3 text-white">Snack 4</h1>
+
+        <section>
+            <?php foreach ($classi as $singolaClasse => $studenti) { ?>
+                <div>
+                    <div class="row">
+                        <div class="col-12">
+
+                            <h3 class="text-center"><?= $singolaClasse ?></h3>
+
+                            <?php foreach ($studenti as $singoloStudente) { ?>
+                                <article class="d-flex justify-content-center">
+                                    <h5 class="me-4">Nome: <?= $singoloStudente["nome"] ?></h5>
+                                    <h5 class="me-4">Cognome: <?= $singoloStudente["cognome"] ?></h5>
+                                    <h5 class="me-4">Età: <?= $singoloStudente["anni"] ?></h5>
+                                    <h5 class="me-4">Voto medio: <?= $singoloStudente["voto_medio"] ?></h5>
+                                    <h5>Linguaggio preferito: <?= $singoloStudente["linguaggio_preferito"] ?></h5>
+                                </article>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            <?php } ?>
+        </section>
+    </main>
 </body>
 
 </html>
