@@ -261,27 +261,52 @@ $classi = [
 
         <h1 class="text-center pt-3 pb-3 text-white">Snack 4</h1>
 
+        <!-- FORM -->
+        <form action="index4.php" method="get" class="d-flex">
+            <!-- Checkbox per studenti con voro sufficiente -->
+            <div class="form-check mb-3 ms-5">
+                <input class="form-check-input" type="checkbox" value="" id="sufficienza" name="sufficienza">
+                <label class="form-check-label" for="flexCheckDefault">
+                    <span class="text-white">Studenti con voto sufficiente</span>
+                </label>
+            </div>
+
+            <!-- Buttons -->
+            <div class="text-end w-100 me-5">
+                <button type="submit" class="btn btn-success">Invia</button>
+                <button type="reset" class="btn btn-warning">reset</button>
+            </div>
+        </form>
+
         <section>
             <?php foreach ($classi as $singolaClasse => $studenti) { ?>
                 <div>
-                    <div class="row">
-                        <div class="col-12">
 
-                            <h3 class="text-center"><?= $singolaClasse ?></h3>
+                    <h3 class="text-center"><?= $singolaClasse ?></h3>
 
-                            <?php foreach ($studenti as $singoloStudente) { ?>
-                                <article class="d-flex justify-content-center">
-                                    <h5 class="me-4">Nome: <?= $singoloStudente["nome"] ?></h5>
-                                    <h5 class="me-4">Cognome: <?= $singoloStudente["cognome"] ?></h5>
-                                    <h5 class="me-4">Età: <?= $singoloStudente["anni"] ?></h5>
-                                    <h5 class="me-4">Voto medio: <?= $singoloStudente["voto_medio"] ?></h5>
-                                    <h5>Linguaggio preferito: <?= $singoloStudente["linguaggio_preferito"] ?></h5>
-                                </article>
-                            <?php } ?>
-                        </div>
-                    </div>
+                    <?php foreach ($studenti as $singoloStudente) { ?>
+                        <article class="d-flex flex-wrap row-cols-5">
+                            <div class="col text-center">
+                                <h5>Nome: <?= $singoloStudente["nome"] ?></h5>
+                            </div>
+                            <div class="col text-center">
+                                <h5>Cognome: <?= $singoloStudente["cognome"] ?></h5>
+                            </div>
+                            <div class="col text-center">
+                                <h5>Linguaggio preferito: <?= $singoloStudente["linguaggio_preferito"] ?></h5>
+                            </div>
+
+                            <div class="col text-center">
+                                <h5>Voto medio: <?= $singoloStudente["voto_medio"] ?></h5>
+                            </div>
+                            <div class="col text-center">
+                                <h5>Età: <?= $singoloStudente["anni"] ?></h5>
+                            </div>
+                        </article>
+                    <?php } ?>
+
+                    <hr>
                 </div>
-                <hr>
             <?php } ?>
         </section>
     </main>
