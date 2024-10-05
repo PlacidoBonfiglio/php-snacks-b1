@@ -237,6 +237,26 @@ $classi = [
         ],
     ],
 ];
+
+// VOTI SUFFICIENTI (NECESSITA DI AGGIUSTAMENTI)
+// $studentiSufficienza;
+
+// if (isset($_GET["sufficiente"]) && $_GET["sufficiente"] === "on") {
+//     var_dump("ho selezionato solo gli studenti con la sufficienza");
+//     $studentiSufficienza = [];
+
+//     foreach ($classi as $singolaClasse => $studenti) {
+//         foreach ($studenti as $singoloStudente) {
+//             if ($singoloStudente["voto_medio"] >= 6) {
+//                 $studentiSufficienza[] = $singoloStudente;
+//             }
+//         }
+//     }
+// } else {
+//     var_dump("ho selezionato tutti gli studenti");
+//     $studentiSufficienza = $classi;
+// }
+
 ?>
 
 <!-- HTML -->
@@ -262,11 +282,11 @@ $classi = [
         <h1 class="text-center pt-3 pb-3 text-white">Snack 4</h1>
 
         <!-- FORM -->
-        <form action="index4.php" method="get" class="d-flex">
+        <form action="index4.php" method="GET" class="d-flex">
             <!-- Checkbox per studenti con voro sufficiente -->
             <div class="form-check mb-3 ms-5">
-                <input class="form-check-input" type="checkbox" value="" id="sufficienza" name="sufficienza">
-                <label class="form-check-label" for="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" name="sufficiente" id="sufficiente">
+                <label class="form-check-label" for="sufficienza">
                     <span class="text-white">Studenti con voto sufficiente</span>
                 </label>
             </div>
