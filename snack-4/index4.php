@@ -238,24 +238,56 @@ $classi = [
     ],
 ];
 
-// VOTI SUFFICIENTI (NECESSITA DI AGGIUSTAMENTI)
-// $studentiSufficienza;
+$filtroStudenti;
 
+// ! STUDENTI CON VOTI SUFFICIENTI (NECESSITA DI AGGIUSTAMENTI)
 // if (isset($_GET["sufficiente"]) && $_GET["sufficiente"] === "on") {
 //     var_dump("ho selezionato solo gli studenti con la sufficienza");
-//     $studentiSufficienza = [];
+//     $filtroStudenti = [];
 
 //     foreach ($classi as $singolaClasse => $studenti) {
 //         foreach ($studenti as $singoloStudente) {
 //             if ($singoloStudente["voto_medio"] >= 6) {
-//                 $studentiSufficienza[] = $singoloStudente;
+//                 $filtroStudenti[] = $singoloStudente;
 //             }
 //         }
 //     }
 // } else {
 //     var_dump("ho selezionato tutti gli studenti");
-//     $studentiSufficienza = $classi;
+//     $filtroStudenti = $classi;
 // }
+
+// ! VOTO MEDIO MASSIMO;
+if (isset($_GET["votoMedio"]) && ($_GET["votoMedio"] >= 1 && $_GET["votoMedio"] <= 10)) {
+    var_dump("voto medio massimo preso");
+    $voteArray = [];
+
+    foreach ($classi as $singolaClasse => $studenti) {
+        foreach ($studenti as $singoloStudente) {
+            if ($singoloStudente["voto_medio"] <= $_GET["voto_medio"]) {
+                $voteArray[] = $singoloStudente;
+            }
+        }
+    }
+
+    $filtroStudenti = $voteArray;
+} else {
+    var_dump("ho preso qualsiasi media dei voti");
+    $filtroStudenti = $classi;
+}
+
+// ! LINGUAGGIO DI PROGRAMMAZIONE PREFERITO
+if (($_GET["linguaggioPreferito"] === "HTML")) {
+    var_dump("ho selezionato il linguaggio HTML");
+} elseif (($_GET["linguaggioPreferito"] === "CSS")) {
+    var_dump("ho selezionato il linguaggio CSS");
+} elseif (($_GET["linguaggioPreferito"] === "JS")) {
+    var_dump("ho selezionato il linguaggio JS");
+} elseif (($_GET["linguaggioPreferito"] === "PHP")) {
+    var_dump("ho selezionato il linguaggio PHP");
+} else {
+    var_dump("ho selezionato tutti i linguaggi di programmazione");
+}
 
 ?>
 
@@ -282,23 +314,54 @@ $classi = [
         <h1 class="text-center pt-3 pb-3 text-white">Snack 4</h1>
 
         <!-- FORM -->
-        <form action="index4.php" method="GET" class="d-flex">
-            <!-- Checkbox per studenti con voro sufficiente -->
-            <div class="form-check mb-3 ms-5">
-                <input class="form-check-input" type="checkbox" name="sufficiente" id="sufficiente">
-                <label class="form-check-label" for="sufficienza">
-                    <span class="text-white">Studenti con voto sufficiente</span>
-                </label>
+        <form action="index4.php" method="GET">
+            <div class="row row-cols-4 align-items-center">
+
+                <div class="col">
+                    <!-- Checkbox per studenti con voro sufficiente -->
+                    <div class=" form-check mb-3 ms-5">
+                        <input class="form-check-input" type="checkbox" name="sufficiente" id="sufficiente">
+                        <label class="form-check-label" for="sufficienza">
+                            <span class="text-white">Studenti con voto sufficiente</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <!-- Voto medio massimo -->
+                    <div class="input-group mb-3">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="voto-medio" placeholder="Voto medio"
+                                name="votoMedio" min="1" max="10">
+                            <label for="floatingInputGroup1">Voto medio massimo</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <!-- Linguaggio di programmazione preferito -->
+                    <select class="form-select form-select-lg mb-3" aria-label="Large select example"
+                        name="linguaggioPreferito">
+                        <option selected>Linguaggio preferito</option>
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="js">JS</option>
+                        <option value="php">PHP</option>
+                    </select>
+                </div>
+
+                <div class="col">
+                    <!-- Buttons -->
+                    <div class="text-end me-5">
+                        <button type="submit" class="btn btn-success btn-lg">Invia</button>
+                        <button type="reset" class="btn btn-warning btn-lg">reset</button>
+                    </div>
+                </div>
             </div>
 
-            <!-- Buttons -->
-            <div class="text-end w-100 me-5">
-                <button type="submit" class="btn btn-success">Invia</button>
-                <button type="reset" class="btn btn-warning">reset</button>
-            </div>
         </form>
 
-        <section>
+        <section class="pt-4">
             <?php foreach ($classi as $singolaClasse => $studenti) { ?>
                 <div>
 
