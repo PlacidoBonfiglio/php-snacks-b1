@@ -1,4 +1,7 @@
 <?php
+$word = $_GET["word"];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +26,7 @@
             <form action="index5.php" method="get">
                 <div class="mb-3">
                     <label for="text" class="form-label">Verifica parola palindroma</label>
-                    <input class="form-control" type="text" id="text" rows="3">
+                    <input class="form-control" type="text" id="text" rows="3" name="word">
                 </div>
 
                 <div>
