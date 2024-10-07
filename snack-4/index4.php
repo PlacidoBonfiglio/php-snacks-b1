@@ -238,24 +238,24 @@ $classi = [
     ],
 ];
 
-$filtroStudenti;
+$filtroStudenti = [];
 
 // ! STUDENTI CON VOTI SUFFICIENTI (NECESSITA DI AGGIUSTAMENTI)
-// if (isset($_GET["sufficiente"]) && $_GET["sufficiente"] === "on") {
-//     var_dump("ho selezionato solo gli studenti con la sufficienza");
-//     $filtroStudenti = [];
+if (isset($_GET["sufficiente"]) && $_GET["sufficiente"] === "on") {
+    var_dump("ho selezionato solo gli studenti con la sufficienza");
+    $studentiSufficienza = [];
 
-//     foreach ($classi as $singolaClasse => $studenti) {
-//         foreach ($studenti as $singoloStudente) {
-//             if ($singoloStudente["voto_medio"] >= 6) {
-//                 $filtroStudenti[] = $singoloStudente;
-//             }
-//         }
-//     }
-// } else {
-//     var_dump("ho selezionato tutti gli studenti");
-//     $filtroStudenti = $classi;
-// }
+    foreach ($classi as $singolaClasse => $studenti) {
+        foreach ($studenti as $singoloStudente) {
+            if ($singoloStudente["voto_medio"] >= 6) {
+                $studentiSufficienza[] = $singoloStudente;
+            }
+        }
+    }
+} else {
+    var_dump("ho selezionato tutti gli studenti");
+    $studentiSufficienza = $classi;
+}
 
 // ! VOTO MEDIO MASSIMO;
 if (isset($_GET["votoMedio"]) && ($_GET["votoMedio"] >= 1 && $_GET["votoMedio"] <= 10)) {
@@ -363,33 +363,33 @@ if (($_GET["linguaggioPreferito"] === "HTML")) {
 
         <section class="pt-4">
             <?php foreach ($classi as $singolaClasse => $studenti) { ?>
-                <div>
+            <div>
 
-                    <h3 class="text-center"><?= $singolaClasse ?></h3>
+                <h3 class="text-center"><?= $singolaClasse ?></h3>
 
-                    <?php foreach ($studenti as $singoloStudente) { ?>
-                        <article class="d-flex flex-wrap row-cols-5">
-                            <div class="col text-center">
-                                <h5>Nome: <?= $singoloStudente["nome"] ?></h5>
-                            </div>
-                            <div class="col text-center">
-                                <h5>Cognome: <?= $singoloStudente["cognome"] ?></h5>
-                            </div>
-                            <div class="col text-center">
-                                <h5>Linguaggio preferito: <?= $singoloStudente["linguaggio_preferito"] ?></h5>
-                            </div>
+                <?php foreach ($studenti as $singoloStudente) { ?>
+                <article class="d-flex flex-wrap row-cols-5">
+                    <div class="col text-center">
+                        <h5>Nome: <?= $singoloStudente["nome"] ?></h5>
+                    </div>
+                    <div class="col text-center">
+                        <h5>Cognome: <?= $singoloStudente["cognome"] ?></h5>
+                    </div>
+                    <div class="col text-center">
+                        <h5>Linguaggio preferito: <?= $singoloStudente["linguaggio_preferito"] ?></h5>
+                    </div>
 
-                            <div class="col text-center">
-                                <h5>Voto medio: <?= $singoloStudente["voto_medio"] ?></h5>
-                            </div>
-                            <div class="col text-center">
-                                <h5>Età: <?= $singoloStudente["anni"] ?></h5>
-                            </div>
-                        </article>
-                    <?php } ?>
+                    <div class="col text-center">
+                        <h5>Voto medio: <?= $singoloStudente["voto_medio"] ?></h5>
+                    </div>
+                    <div class="col text-center">
+                        <h5>Età: <?= $singoloStudente["anni"] ?></h5>
+                    </div>
+                </article>
+                <?php } ?>
 
-                    <hr>
-                </div>
+                <hr>
+            </div>
             <?php } ?>
         </section>
     </main>
